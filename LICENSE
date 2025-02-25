@@ -1,0 +1,5 @@
+**Note**: Ensure that the `requirements.txt` file in your repository includes all necessary dependencies, such as `qrcode` and `Pillow`. Additionally, replace placeholders like `UPI_ID`, `Recipient_Name`, `Amount`, and `Transaction_Note` with actual variable names or instructions as per your application's implementation.
+
+For further guidance on generating QR codes in Python, you may refer to this [GeeksforGeeks article](https://www.geeksforgeeks.org/generate-qr-code-using-qrcode-in-python/).
+
+By following this template, you can provide clear and concise information to users, enhancing their understanding and experience with your UPI QR Code Generator project.11
