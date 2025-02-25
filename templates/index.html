@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI QR Generator</title>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Dark Theme Background */
+        body {
+            background: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        /* Card Container */
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Title */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #00ffcc;
+        }
+        
+        /* Labels */
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        /* Input Field Container */
+        .input-group {
+            display: flex;
+            align-items: center;
+            background: #292929;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .input-group i {
+            color: #00ffcc;
+            margin-right: 10px;
+        }
+
+        /* Input Fields */
+        input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            color: #fff;
+            outline: none;
+            font-size: 16px;
+        }
+
+        input:focus {
+            box-shadow: none;
+        }
+
+        /* Submit Button */
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #00ffcc;
+            border: none;
+            border-radius: 5px;
+            color: #121212;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #00d1a0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><i class="fa-solid fa-qrcode"></i> UPI QR Generator</h1>
+        <form method="POST" action="/generate">
+            
+            <label><i class="fa-solid fa-building-columns"></i> UPI ID:</label>
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="upi_id" placeholder="username@upi" required>
+            </div>
+
+            <label><i class="fa-solid fa-user-tie"></i> Merchant Name:</label>
+            <div class="input-group">
+                <i class="fa-solid fa-store"></i>
+                <input type="text" name="merchant_name" placeholder="Business Name" required>
+            </div>
+
+            <label><i class="fa-solid fa-money-bill-wave"></i> Amount:</label>
+            <div class="input-group">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <input type="number" step="0.01" name="amount" required>
+            </div>
+
+            <label><i class="fa-solid fa-pen"></i> Note (optional):</label>
+            <div class="input-group">
+                <i class="fa-solid fa-comment"></i>
+                <input type="text" name="note" placeholder="Payment for services">
+            </div>
+
+            <button type="submit" class="button">
+                <i class="fa-solid fa-qrcode"></i> Generate QR
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>

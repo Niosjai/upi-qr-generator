@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Generated</title>
+
+    <!-- Correct Font Awesome Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            background: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #00ffcc;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        img {
+            max-width: 250px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #downloadBtn {
+            background: #ffcc00;
+            color: #121212;
+        }
+
+        #downloadBtn:hover {
+            background: #e6b800;
+        }
+
+        #generateBtn {
+            background: #00ffcc;
+            color: #121212;
+        }
+
+        #generateBtn:hover {
+            background: #00d1a0;
+        }
+
+        .scan-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .icon {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><i class="fa-solid fa-qrcode"></i> Payment QR Code</h1>
+        <p><i class="fa-solid fa-user"></i> Merchant: <strong>{{ merchant_name }}</strong></p>
+        <p><i class="fa-solid fa-building-columns"></i> UPI ID: <strong>{{ upi_id }}</strong></p>
+        <p><i class="fa-solid fa-indian-rupee-sign"></i> Amount: <strong>₹{{ amount }}</strong></p>
+        
+        <img id="qrImage" src="data:image/png;base64,{{ qr_code }}" alt="UPI QR Code">
+        
+        <p class="scan-text"> Scan this QR code using any UPI app to make payment</p>
+        
+        <!-- Download Button -->
+        <button id="downloadBtn" class="button">
+            <i class="fa-solid fa-download"></i> Download QR
+        </button>
+
+        <!-- Generate New QR Button (Now Matches Download Button) -->
+        <button id="generateBtn" class="button" onclick="location.href='/'">
+            <i class="fa-solid fa-arrows-rotate"></i> Generate New QR
+        </button>
+    </div>
+
+    <script>
+        document.getElementById("downloadBtn").addEventListener("click", function () {
+            let qrImage = document.getElementById("qrImage");
+
+            // Create a temporary link element
+            let link = document.createElement("a");
+            link.href = qrImage.src;
+            link.download = "UPI_QR_Code.png";
+
+            // Trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+
+</body>
+</html>
